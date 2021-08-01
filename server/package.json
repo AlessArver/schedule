@@ -5,7 +5,7 @@
   "scripts": {
     "start": "cross-env NODE_ENV=production node src/dist/main.js",
     "build": "tsc",
-    "server": "nodemon dist/main.js",
+    "server": "nodemon src/main.ts",
     "dev": "cross-env NODE_ENV=development concurrently \\\"yarn server\\\" \\\"yarn client\\\"",
     "watch-ts": "tsc -w",
     "client": "npm run start --prefix ../client",

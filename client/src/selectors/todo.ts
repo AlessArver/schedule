@@ -1,5 +1,6 @@
-import { RootState } from '../flux'
+import { RootState } from "../flux";
 
-export const getTodos = (state: RootState) =>  state.todosPage.todos
+export const getTodos = (state: RootState) => state.todos.todos;
 
-export const getCompletedInProgress = (state: RootState) => state.todosPage.completedInProgress
+export const getCompletedInProgress = (state: RootState) =>
+  state.todos.completedInProgress;

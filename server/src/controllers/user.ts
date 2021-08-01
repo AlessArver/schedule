@@ -30,8 +30,9 @@ export const register = async (req: Request, res: Response) => {
 }
 
 export const login = async (req: Request, res: Response) => {
+  console.log("kek")
   try {
-    const {email, password} = req.body
+    const {email, password} = req.body 
     const user = await UserModel.findOne({email})
 
     const isMatch = await bcrypt.compare(password, user.password)
@@ -53,7 +54,7 @@ export const login = async (req: Request, res: Response) => {
 
 export const getUser = (req: Request, res: Response) => {
   try {
-    UserModel.findById(req.params.id, (e, user: UserDocument) => {
+    UserModel.findById(req.params.id, (e: any, user: UserDocument) => {
       e ? res.json({resultCode: 1, message: 'Что-то пошло не так. Попробуйте снова.', e: e})
         : res.json({resultCode: 0, user, message: 'User received'})
     })
@@ -67,7 +68,7 @@ export const getAuthUser = async (req: any, res: Response) => {
     const token = req.cookies['userToken']
     let user: any = jwt.verify(token, process.env.SECRET_KEY)
 
-    UserModel.findById(user.userId, (e, user: UserDocument) => {
+    UserModel.findById(user.userId, (e: any, user: UserDocument) => {
       e ? res.json({resultCode: 1, message: 'Нет авторизации'})
         : res.json({resultCode: 0, token: req.token, user, message: 'Received your data'})
     })
@@ -103,8 +104,8 @@ export const logout =  (req: Request, res: Response) => {
 }
 
 export const deleteUser = async (req: Request, res: Response) => {
-  UserModel.findByIdAndDelete(req.params.id, e => {
-    e ? res.json({resultCode: 1, message: 'Что-то пошло не так. Попробуйте снова.', e: e})
-      : res.json({resultCode: 0, message: 'user is deleted'})
-  })
+  // UserModel.findByIdAndDelete(req.params.id, (e: any): void => {
+  //   e ? res.json({resultCode: 1, message: 'Что-то пошло не так. Попробуйте снова.', e: e})
+  //     : res.json({resultCode: 0, message: 'user is deleted'})
+  // })
 }

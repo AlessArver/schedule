@@ -6,8 +6,8 @@ export type mapDispatchToProps = {
 }
 
 export type Props = {
-  theme: string
-  toggleTheme: () => void
+  theme: 'light' | 'dark'
+  toggleTheme: (theme: string) => void
 }
 
 export type storeProps = mapStateToProps & mapDispatchToProps

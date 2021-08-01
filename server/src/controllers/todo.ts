@@ -82,13 +82,13 @@ class TodoController {
   }
   deleteTodo = (req: any, res: Response) => {
     try {
-      TodoModel.findByIdAndDelete(req.params.id, (e: any, todo: TodoDocument) => {
-        if (e)
-          res.json({resultCode: 1, message: 'Что-то пошло не так. Попробуйте снова.', e: e})
-        else {
-          res.json({resultCode: 0, message: 'Тодо удалено'})
-        }
-      })
+      // TodoModel.findByIdAndDelete(req.params.id, (e: any, todo: TodoDocument) => {
+      //   if (e)
+      //     res.json({resultCode: 1, message: 'Что-то пошло не так. Попробуйте снова.', e: e})
+      //   else {
+      //     res.json({resultCode: 0, message: 'Тодо удалено'})
+      //   }
+      // })
     } catch (e) {
       res.json({resultCode: 1, message: 'Что-то пошло не так. Попробуйте снова.', e: e})
     }
